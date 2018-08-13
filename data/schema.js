@@ -1,6 +1,8 @@
-import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
+var { makeExecutableSchema, addMockFunctionsToSchema} = require('graphql-tools')
+
 // import mocks from './mocks';
-import resolvers from './resolvers';
+var resolvers = require('./resolvers')
+
 
 const typeDefs = `
   type Query {
@@ -13,4 +15,4 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 // addMockFunctionsToSchema({ schema, mocks });
 
-export default schema;
+module.exports =  schema;

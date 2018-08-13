@@ -1,5 +1,5 @@
-require('dotenv').config();
-import winston from 'winston';
+require('dotenv').config()
+var winston = require('winston')
 
 
 // create transports
@@ -12,12 +12,12 @@ const transports = [
         level: process.env.log_level,
         colorize: true
     })
-];
+]
 
 // setup format
 const myFormat = winston.format.printf(info => {
-    return `${info.timestamp} ${info.level}: ${info.message}`;
-  });
+    return `${info.timestamp} ${info.level}: ${info.message}`
+  })
 
 // TODO: Look into winston-mail
 
@@ -27,8 +27,8 @@ const logger = winston.createLogger({
         winston.format.timestamp(),
         myFormat
     )
-});
+})
 
-logger.info('Logger has been created');
+logger.info('Logger has been created')
 
-export default logger;
+module.exports =  logger

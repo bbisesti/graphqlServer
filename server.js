@@ -6,21 +6,17 @@
 require('dotenv').config();
 
 // express-js framework
-import express from 'express';
-
+const express = require('express')
+const app = express()
 // get graphql libraries
-import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+var { graphqlExpress, graphiqlExpress} = require('apollo-server-express')
 
 // bodyParser for json
-import bodyParser from 'body-parser';
+var bodyParser = require('body-parser')
 
 // logging
-import logger from './util/log';
-
-import helmet from 'helmet';
-
-
-const app = express();
+var logger = require('./util/log')
+var helmet = require('helmet')
 
 // get port number from env file
 const port = process.env.port || 3000;
@@ -47,7 +43,7 @@ app.use(helmet());
  */
 
 // get schemas
-import schema from './data/schema';
+var schema = require('./data/schema')
 
 app.use('/graphql', graphqlExpress({ schema }));
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
