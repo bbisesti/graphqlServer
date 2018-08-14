@@ -51,14 +51,17 @@ app.use('/graphql', graphqlExpress({
         defaultMaxAge: 5
     }
 }));
-app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 /**
  * Start Server
  */
 
  if(process.env.env === 'dev') {
+
+    // only show this endpoint in dev instance
+    app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
+    
     app.listen(port, () =>
-    logger.info(`GraphiQL is now running on http://localhost:${port}/graphiql`)
+        logger.info(`GraphiQL is now running on http://localhost:${port}/graphiql`)
     );
  }
