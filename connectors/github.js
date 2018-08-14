@@ -13,26 +13,42 @@ const gitHub = {
                 query {
                     viewer {
                         name
-                         repositories(last: 3) {
-                           nodes {
-                             name
-                             createdAt
-                             url
-                             homepageUrl
-                             languages(first: 5) {
-                                 nodes {
-                                     name
-                                 }
-                             }
-                           }
-                         }
+                        repositories(last: 100) {
+                        nodes {
+                            name
+                            createdAt
+                            url
+                            homepageUrl
+                            primaryLanguage {
+                                name
+                            }
+                            languages(first: 5) {
+                                edges {
+                                    node {
+                                        name
+                                        color
+                                    }
+                                    size
+                                }
+                            }
+                            defaultBranchRef {
+                                target {
+                                    ...on Commit {
+                                        history(since: "2010-01-01T00:00:00+00:00") {
+                                            totalCount
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        }
                        }
                 }
             `})
         })
         .then(res => res.json())
         .then(res => {
-            console.log(res.data.viewer.repositories.nodes)
+            // console.log(res.data.viewer.repositories.defaultBranchRef)
             return res.data
         })
     }

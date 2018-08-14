@@ -19,32 +19,44 @@ const typeDefs = `
   }
 
   type GitHub {
-    viewer: GitHubViewer
+    viewer: GHViewer
   }
 
-  type GitHubViewer {
+  type GHViewer {
     name: String
-    repositories: GitHubNodes
+    repositories: GHRepoNodes
   }
 
-  type GitHubNodes {
-    nodes: [GitHubRepository]
+  type GHRepoNodes {
+    nodes: [GHRepository]
   }
 
-  type GitHubRepository {
+  type GHRepository {
     name: String
     createdAt: String
     url: String
     homepageUrl: String
-    languages: GitHubLanguageNodes
+    primaryLanguage: GHPrimaryLanguage
+    languages: GHLngEdges
   }
 
-  type GitHubLanguageNodes {
-    nodes: [GitHubLanguage]
-  }
-
-  type GitHubLanguage {
+  type GHPrimaryLanguage {
+    color: String
     name: String
+  }
+
+  type GHLngEdges {
+    edges: [GHLanguageEdges]
+  }
+
+  type GHLanguageEdges {
+    node: GHLanguage
+    size: Int
+  }
+
+  type GHLanguage {
+    name: String
+    color: String
   }
 
 `;
