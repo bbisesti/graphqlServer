@@ -6,7 +6,45 @@ var resolvers = require('./resolvers')
 
 const typeDefs = `
   type Query {
-    testString: String
+    testString: String,
+    getProfile: Facebook,
+    getGitHub: GitHub
+  }
+
+  type Facebook {
+    id: Int,
+    name: String,
+    about: String,
+    birthday: String
+  }
+
+  type GitHub {
+    viewer: GitHubViewer
+  }
+
+  type GitHubViewer {
+    name: String
+    repositories: GitHubNodes
+  }
+
+  type GitHubNodes {
+    nodes: [GitHubRepository]
+  }
+
+  type GitHubRepository {
+    name: String
+    createdAt: String
+    url: String
+    homepageUrl: String
+    languages: GitHubLanguageNodes
+  }
+
+  type GitHubLanguageNodes {
+    nodes: [GitHubLanguage]
+  }
+
+  type GitHubLanguage {
+    name: String
   }
 
 `;
