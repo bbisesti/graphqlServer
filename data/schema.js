@@ -11,14 +11,14 @@ const typeDefs = `
     getGitHub: GitHub
   }
 
-  type Facebook {
+  type Facebook @cacheControl(maxAge: 240) {
     id: Int,
     name: String,
     about: String,
     birthday: String
   }
 
-  type GitHub {
+  type GitHub @cacheControl(maxAge: 240) {
     viewer: GHViewer
   }
 

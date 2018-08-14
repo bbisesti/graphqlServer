@@ -45,7 +45,12 @@ app.use(helmet());
 // get schemas
 var schema = require('./data/schema')
 
-app.use('/graphql', graphqlExpress({ schema }));
+app.use('/graphql', graphqlExpress({ 
+    schema,
+    cacheControl: {
+        defaultMaxAge: 5
+    }
+}));
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 /**
