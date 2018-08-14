@@ -1,4 +1,4 @@
-# graphqlServer
+# bbisesti/graphqlServer
 
 This project is used to aggregate data from multiple data sources into a single API for the purposes of integrating into Brett Bisesti's website.  This is an example of how GraphQL can be used to merge data from different data sources
 
